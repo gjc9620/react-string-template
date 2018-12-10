@@ -1,0 +1,10 @@
+{
+  "name": "react-string-template",
+  "version": "1.0.0",
+  "script":{
+    "test": "node ./test/test.js"
+  },
+  "devDependencies": {
+    "string-template": "^1.0.0"
+  }
+}
