@@ -62,10 +62,10 @@
     return str.replace(nargs, function replaceArg(match, capture, index) {
 
       if (
-        string[index - 1] === "{" &&
-        string[index + match.length] === "}"
+        str[index - 1] === "{" &&
+        str[index + match.length] === "}"
       ) {
-        return i
+        return capture
       }
       return match
     });
@@ -78,7 +78,7 @@
      render
   }){
     const positions = getPositions(str, values);
-    const parsedStr = parseEscape(str);
+    // const parsedStr = parseEscape(str);
     const arr = [];
 
     if(positions.length < 1){
@@ -89,26 +89,40 @@
       positions.forEach((p)=>{
         const { startIndex, endIndex, value } = p;
         const general = str.substring(lastIndex, startIndex);
-        arr.push(general);
+        arr.push({ type: 'general', value: general });
 
         if(value){
-          arr.push(value);
+          arr.push({ type: 'var', value: value });
         }else {
-          arr.push(renderNoMatch(str, p));
+          arr.push({ type: 'var', value: renderNoMatch(str, p), isNoMatch: true });
         }
 
         lastIndex = endIndex;
       });
 
-      arr.push(str.substring(lastIndex));
+      arr.push({ type:'general', value: str.substring(lastIndex) });
 
     }
 
-    debugger
-    return render(arr);
+    const parsedArr = arr.map((node)=>{
+      const { type, value } = node;
+      if(type === 'general' && typeof value === 'string'){
+        return parseEscape(value);
+      }
+      return value
+    });
+
+    return render(parsedArr);
   }
 
-  rightTemplate(
+  console.log(
+    rightTemplate("Hello {{name}, you have {count} {vvv} {{aaa}} unread messages", {
+      name: "Robert",
+      count: 12
+    })
+  )
+
+  template(
     {
       str: "Hello {{name}, you have {count} {vvv} {{aaa}} unread messages",
       values: {
@@ -119,12 +133,7 @@
     },
   )
 
-  console.log(
-    template("Hello {{name}, you have {count} {vvv} {{aaa}} unread messages", {
-      name: "Robert",
-      count: 12
-    })
-  )
+
 
 
 
