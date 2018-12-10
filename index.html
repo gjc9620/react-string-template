@@ -77,12 +77,11 @@
      renderNoMatch = ()=> "",
      render
   }){
-    const positions = getPositions(str, values);
-    // const parsedStr = parseEscape(str);
     const arr = [];
+    const positions = getPositions(str, values);
 
     if(positions.length < 1){
-      arr.push(str);
+      arr.push({ type: 'general', value: str });
     }else {
       let lastIndex = 0;
 
@@ -132,6 +131,94 @@
       render: (arr)=>console.log(arr.join('')),
     },
   )
+
+  ///////////////////////////////////////
+
+  console.log(
+    rightTemplate("111{name}1111", {
+      name: "Robert",
+      count: 12
+    })
+  )
+
+  template(
+    {
+      str: "111{name}1111",
+      values: {
+        name: "Robert",
+        count: 12
+      },
+      render: (arr)=>console.log(arr.join('')),
+    },
+  )
+
+
+  ///////////////////////////////////
+
+  console.log(
+    rightTemplate("1111111", {
+      name: "Robert",
+      count: 12
+    })
+  )
+
+  template(
+    {
+      str: "1111111",
+      values: {
+        name: "Robert",
+        count: 12
+      },
+      render: (arr)=>console.log(arr.join('')),
+    },
+  )
+
+
+  /////////////////////////////////// no match
+
+
+  template(
+    {
+      str: "111{ggg}1111",
+      renderNoMatch: ()=>'AAAA',
+      values: {
+        name: "Robert",
+        count: 12
+      },
+      render: (arr)=>console.log(arr.join('')),
+    },
+  );
+
+  template(
+    {
+      str: "111{ggg}1111",
+      renderNoMatch: ()=>'{}{}{}}{}{{{}}}{AAA}',
+      values: {
+        name: "Robert",
+        count: 12
+      },
+      render: (arr)=>console.log(arr.join('')),
+    },
+  )
+
+
+  ///////////////////////////////////
+
+
+  template(
+    {
+      str: "111{name}11{count}11{bad}ddddddd{sym}",
+      renderNoMatch: ()=>'{}{}{}}{}{{{}}}{AAA}',
+      values: {
+        name: alert,
+        count: { type: 1},
+        bad: undefined,
+        sym: Symbol("A"),
+      },
+      render: (arr)=>console.log(arr),
+    },
+  )
+
 
 
 
