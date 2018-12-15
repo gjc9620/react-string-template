@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 var nargs = /\{([0-9a-zA-Z_]+)\}/g;
 
 function getPositions(string, values) {
@@ -37,12 +39,11 @@ function parseEscape (str){
   });
 }
 
-module.exports = function template ({
+export function template (
    str,
    values,
    renderNoMatch = ()=> "",
-   render
-}){
+){
   const arr = [];
   const positions = getPositions(str, values);
 
@@ -77,6 +78,20 @@ module.exports = function template ({
     return value
   });
 
-  return render(parsedArr);
-};
+  return parsedArr;
+}
+
+export default class ReactStringTemplate extends Component {
+  render() {
+    const { str, values, renderNoMatch, children } = this.props;
+    return children(template(str, values, renderNoMatch));
+  }
+}
+
+ReactStringTemplate.defaultProps = {
+  str: '',
+  values: {},
+  renderNoMatch : () => '',
+  children: arr => arr,
+}
 
