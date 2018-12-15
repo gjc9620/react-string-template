@@ -21,7 +21,7 @@ react-string-template is simple string template with react
 ```
 
 
-```
+``` jsx
   // add click event
   <ReactStringTemplate
     str={"{charmName} Charm"}
@@ -39,8 +39,8 @@ react-string-template is simple string template with react
 ```
 
 
-```
- <ReactStringTemplate
+``` jsx
+  <ReactStringTemplate
     str={"I am {name}"}
     renderNoMatch={()=>'not match'} >
     {(children)=><div>{children}</div>}
