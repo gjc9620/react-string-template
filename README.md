@@ -40,6 +40,7 @@ react-string-template is simple string template with react
 
 
 ``` jsx
+  // render no Match
   <ReactStringTemplate
     str={"I am {name}"}
     renderNoMatch={()=>'not match'} >
