@@ -8,6 +8,18 @@
     "maintained node versions",
     "not dead"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gjc9620/react-string-template.git"
+  },
+  "keywords": [
+    "react",
+    "string",
+    "string-template",
+    "es6"
+  ],
+  "author": "992758355@qq.com",
+  "license": "MIT",
   "scripts": {
     "test": "node ./test/test.js",
     "dev": "cd demo && webpack-dev-server --config ./devServer.js --watch --open --mode development",
