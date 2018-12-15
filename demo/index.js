@@ -5,18 +5,39 @@ import ReactStringTemplate from "../index.jsx";
 class App extends React.Component {
   render() {
     return (
-      <ReactStringTemplate
-        str={"{name} is a series of {foo} novels written by British {{author}} {author} in {yeah}."}
-        renderNoMatch={()=>'{}{}{}}{}{{{}}}{AAA}'}
-        values={{
-          name: <a href="https://www.google.com/search?q=Harry Potter">Harry Potter</a>,
-          foo: 'fantasy',
-          bar: 'novels',
-          author: 'J. K. Rowling',
-          yeah: 1997,
-        }} >
-        {(children)=><div>{children}</div>}
-      </ReactStringTemplate>
+      <div>
+        <ReactStringTemplate
+          str={"{name} is a series of {foo} novels written by British {{author}} {author} in {yeah}."}
+          renderNoMatch={()=>'not match'}
+          values={{
+            name: <a href="https://www.google.com/search?q=Harry Potter">Harry Potter</a>,
+            foo: 'fantasy',
+            bar: 'novels',
+            author: 'J. K. Rowling',
+            yeah: 1997,
+          }} >
+          {(children)=><div>{children}</div>}
+        </ReactStringTemplate>
+  
+        <ReactStringTemplate
+          str={"{charmName} Charm"}
+          values={{
+            charmName: (
+              <span
+                onClick={()=>alert('Patronus!')}>
+                Patronus
+              </span>
+            ),
+          }} >
+          {(children)=><div>{children}</div>}
+        </ReactStringTemplate>
+  
+        <ReactStringTemplate
+          str={"I am {name}"}
+          renderNoMatch={()=>'not match'} >
+          {(children)=><div>{children}</div>}
+        </ReactStringTemplate>
+      </div>
     );
   }
 }
