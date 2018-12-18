@@ -1,6 +1,9 @@
 # react-string-template
 react-string-template is simple string template with react
 
+##install
+`npm i --save react-string-template`
+
 
 ``` jsx
   <ReactStringTemplate
