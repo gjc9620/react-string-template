@@ -1,4 +1,6 @@
-{
+const package =  require('./package.json');
+
+module.exports = {
   "presets": [
     "@babel/preset-react",
     [
@@ -6,7 +8,8 @@
       {
         "targets": {
           "esmodules": false,
-          "node": true
+          "node": true,
+          "browsers": package.browserslist,
         }
       }
     ]
@@ -16,10 +19,10 @@
       "@babel/plugin-transform-runtime",
       {
         "corejs": false,
-        "helpers": true,
-        "regenerator": true,
+        "helpers": false,
+        "regenerator": false,
         "useESModules": false
       }
     ]
   ]
-}
+};

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from 'react-dom';
-import ReactStringTemplate from "../index.jsx";
+import ReactStringTemplate from "../lib/index.js";
 
 class App extends React.Component {
   render() {
