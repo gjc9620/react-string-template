@@ -1,6 +1,6 @@
 {
   "name": "react-string-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "browserslist": [
     "cover 99.5%",
