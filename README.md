@@ -10,7 +10,7 @@ react-string-template is simple string template with react
     str={"{name} is a series of {foo} novels written by British author {author} in {yeah}."}
     renderNoMatch={()=>'not match'}
     values={{
-      name: <a href="https://www.google.com/search?q=Harry Potter">Harry Potter</a>,
+      name: <a href="https://www.google.com/search?q=Harry Potter" key='potter'>Harry Potter</a>,  // Don't forget write key
       foo: 'fantasy',
       bar: 'novels',
       author: 'J. K. Rowling',
@@ -31,6 +31,7 @@ react-string-template is simple string template with react
     values={{
       charmName: (
         <span
+          key='patronus'
           onClick={()=>alert('Patronus!')}>
           Patronus
         </span>
@@ -55,4 +56,6 @@ react-string-template is simple string template with react
 ```
 
 If you don't need escape use `{{escape}}`
+
+
 

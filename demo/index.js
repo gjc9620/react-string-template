@@ -10,7 +10,7 @@ class App extends React.Component {
           str={"{name} is a series of {foo} novels written by British {{author}} {author} in {yeah}."}
           renderNoMatch={()=>'not match'}
           values={{
-            name: <a href="https://www.google.com/search?q=Harry Potter">Harry Potter</a>,
+            name: <a href="https://www.google.com/search?q=Harry Potter" key='potter'>Harry Potter</a>,
             foo: 'fantasy',
             bar: 'novels',
             author: 'J. K. Rowling',
@@ -24,6 +24,7 @@ class App extends React.Component {
           values={{
             charmName: (
               <span
+                key='patronus'
                 onClick={()=>alert('Patronus!')}>
                 Patronus
               </span>
