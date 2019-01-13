@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`If not match 1`] = `
+<div>
+  I am 
+  not match
+  
+</div>
+`;
+
+exports[`Insert React element and click event 1`] = `
+<div>
+  
+  <span
+    onClick={[Function]}
+  >
+    Patronus
+  </span>
+   Charm
+</div>
+`;
+
+exports[`With React element 1`] = `
+<div>
+  
+  <a
+    href="https://www.google.com/search?q=Harry Potter"
+  >
+    Harry Potter
+  </a>
+   is a series of 
+  fantasy
+   novels written by British {author} 
+  J. K. Rowling
+   in 
+  1997
+  .
+</div>
+`;
