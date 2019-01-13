@@ -1,7 +1,7 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
+  entry: './index.jsx',
   module: {
     rules: [
       {
@@ -9,17 +9,17 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        }
+        },
       },
-    ]
+    ],
   },
   devServer: {
     compress: true,
-    port: 9000
+    port: 9000,
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./index.html",
-    })
-  ]
+      template: './index.html',
+    }),
+  ],
 };

@@ -1,101 +1,108 @@
 import React from 'react';
-import ReactStringTemplate from '../lib';
 import renderer from 'react-test-renderer';
+import ReactStringTemplate from '../lib';
 
 test('With React element', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"{name} is a series of {foo} novels written by British {{author}} {author} in {yeah}."}
-      renderNoMatch={()=>'not match'}
-      values={{
-        name: <a href="https://www.google.com/search?q=Harry Potter" key='potter'>Harry Potter</a>,
+      str={ '{name} is a series of {foo} novels written by British {{author}} {author} in {yeah}.' }
+      renderNoMatch={ () => 'not match' }
+      values={ {
+        name: <a href="https://www.google.com/search?q=Harry Potter" key="potter">Harry Potter</a>,
         foo: 'fantasy',
         bar: 'novels',
         author: 'J. K. Rowling',
         yeah: 1997,
-      }} >
-      {(children)=><div>{children}</div>}
+      } }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Insert React element and click event', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"{charmName} Charm"}
-      values={{
+      str={ '{charmName} Charm' }
+      values={ {
         charmName: (
           <span
-            key='patronus'
-            onClick={()=>alert('Patronus!')}>
+            key="patronus"
+            onClick={ () => alert('Patronus!') }
+          >
             Patronus
           </span>
         ),
-      }} >
-      {(children)=><div>{children}</div>}
+      } }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('If not match', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"I am {name}"}
-      renderNoMatch={()=>'not match'} >
-      {(children)=><div>{children}</div>}
+      str={ 'I am {name}' }
+      renderNoMatch={ () => 'not match' }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Multi {}', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"{name} {age} {}"}
-      values={{
+      str={ '{name} {age} {}' }
+      values={ {
         name: 'Alice',
         age: '13',
-      }}
-      renderNoMatch={()=>'not match'} >
-      {(children)=><div>{children}</div>}
+      } }
+      renderNoMatch={ () => 'not match' }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Empty {}', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"{}"}
-      values={{
+      str={ '{}' }
+      values={ {
         name: 'Alice',
-      }}
-      renderNoMatch={()=>'not match'} >
-      {(children)=><div>{children}</div>}
+      } }
+      renderNoMatch={ () => 'not match' }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Multi Empty {}', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"{} {} {name}"}
-      values={{
+      str={ '{} {} {name}' }
+      values={ {
         name: 'Alice',
-      }}
-      renderNoMatch={()=>'not match'} >
-      {(children)=><div>{children}</div>}
+      } }
+      renderNoMatch={ () => 'not match' }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 
@@ -103,14 +110,15 @@ test('Multi Empty {}', () => {
 test('{{escape}}', () => {
   const component = renderer.create(
     <ReactStringTemplate
-      str={"I am {{name}}"}
-      values={{
+      str={ 'I am {{name}}' }
+      values={ {
         name: 'Alice',
-      }}
-      renderNoMatch={()=>'not match'} >
-      {(children)=><div>{children}</div>}
+      } }
+      renderNoMatch={ () => 'not match' }
+    >
+      {children => <div>{children}</div>}
     </ReactStringTemplate>,
   );
-  let tree = component.toJSON();
+  const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
