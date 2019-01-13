@@ -26,7 +26,6 @@
   "license": "MIT",
   "scripts": {
     "test": "cd ./test && jest --notify ./test/test.js",
-    "ff": "jest --clearCache",
     "jest-babelrc": "jest --notify ./test/test.js",
     "dev": "cd demo && webpack-dev-server --config ./devServer.js --watch --open --mode development",
     "build": "rm -rf lib/* && npx babel index.jsx --out-file ./lib/index.js --source-maps"
