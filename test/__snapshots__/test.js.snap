@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`{{escape}} 1`] = `
+<div>
+  I am {name}
+</div>
+`;
+
+exports[`Empty {} 1`] = `
+<div>
+  {}
+</div>
+`;
+
 exports[`If not match 1`] = `
 <div>
   I am 
@@ -17,6 +29,24 @@ exports[`Insert React element and click event 1`] = `
     Patronus
   </span>
    Charm
+</div>
+`;
+
+exports[`Multi {} 1`] = `
+<div>
+  
+  Alice
+   
+  13
+   {}
+</div>
+`;
+
+exports[`Multi Empty {} 1`] = `
+<div>
+  {} {} 
+  Alice
+  
 </div>
 `;
 

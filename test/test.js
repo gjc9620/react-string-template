@@ -52,3 +52,65 @@ test('If not match', () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('Multi {}', () => {
+  const component = renderer.create(
+    <ReactStringTemplate
+      str={"{name} {age} {}"}
+      values={{
+        name: 'Alice',
+        age: '13',
+      }}
+      renderNoMatch={()=>'not match'} >
+      {(children)=><div>{children}</div>}
+    </ReactStringTemplate>,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test('Empty {}', () => {
+  const component = renderer.create(
+    <ReactStringTemplate
+      str={"{}"}
+      values={{
+        name: 'Alice',
+      }}
+      renderNoMatch={()=>'not match'} >
+      {(children)=><div>{children}</div>}
+    </ReactStringTemplate>,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test('Multi Empty {}', () => {
+  const component = renderer.create(
+    <ReactStringTemplate
+      str={"{} {} {name}"}
+      values={{
+        name: 'Alice',
+      }}
+      renderNoMatch={()=>'not match'} >
+      {(children)=><div>{children}</div>}
+    </ReactStringTemplate>,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+
+test('{{escape}}', () => {
+  const component = renderer.create(
+    <ReactStringTemplate
+      str={"I am {{name}}"}
+      values={{
+        name: 'Alice',
+      }}
+      renderNoMatch={()=>'not match'} >
+      {(children)=><div>{children}</div>}
+    </ReactStringTemplate>,
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
